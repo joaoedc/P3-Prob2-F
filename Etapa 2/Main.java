@@ -1,4 +1,3 @@
-
 package P2_Prob3_2;
 
 import java.util.logging.Level;
@@ -24,7 +23,7 @@ public class Main {
         pedido.incluirItem(item3);
         pedido.incluirItem(item5);
 
-        try {
+        /* try {
             pedido.setTipo(TipoEntrega.LOCAL);
             System.out.println("Valor Entrega local: " + pedido.getValorEntrega());
             System.out.println("Valor Total local: " + pedido.getValorTotal());
@@ -38,8 +37,7 @@ public class Main {
             System.out.println("Valor Total PAC: " + pedido.getValorTotal());
         } catch (TipoEntregaInvalido ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        } */
     }
 
 }

@@ -1,22 +1,22 @@
-
 package P2_Prob3_2;
 
-public class Pac {
-    
+public class Pac implements EntregaInterface {
+
     private static Pac instance;
-    
-    private Pac() {
-        
+
+    Pac() {
+
     }
-    
+
     public static Pac getInstance() {
         if (instance == null) {
             instance = new Pac();
         }
         return instance;
     }
-    
-    private double calculaPac(double peso) throws TipoEntregaInvalido {
+
+    @Override
+    public double entrega(double peso) throws TipoEntregaInvalido {
         if (peso <= 1000) {
             return 10;
         } else if (peso < 2000) {

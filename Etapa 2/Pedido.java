@@ -10,7 +10,7 @@ public final class Pedido {
     private String nomeCliente;
     private Date data;
     private String endereco;
-    private TipoEntrega tipo;
+    private EntregaInterface tipo;
     private ArrayList<ItemPedido> itens;
 
     public Pedido(int numero, String nomeCliente, String endereco) {
@@ -53,7 +53,7 @@ public final class Pedido {
         this.endereco = endereco;
     }
 
-    public void setTipo(TipoEntrega tipo) {
+    public void setTipo(EntregaInterface tipo) {
         this.tipo = tipo;
     }
 
@@ -71,7 +71,7 @@ public final class Pedido {
         return valor;
     }
 
-    public double getValorEntrega() throws TipoEntregaInvalido {        
+    public double getValorEntrega() throws TipoEntregaInvalido {
         double valor = 0;
         int peso = 0;
 
@@ -79,21 +79,8 @@ public final class Pedido {
             peso = peso + item.getProduto().getPeso() * item.getQuantidade();
         }
 
-        switch (tipo) {
-            case SEDEX:
-                valor = calculaSedex(peso);
-                break;
-
-            case PAC:
-                valor = calculaPac(peso);
-                break;
-
-            case LOCAL:
-                return 0;
-
-            default:
-                break;
-        }
+        Contexto contexto = new Contexto(tipo);
+        valor = contexto.selecionaEntrega(peso);
 
         return valor;
     }
@@ -116,7 +103,5 @@ public final class Pedido {
             return 45 + (((int) Math.ceil((peso - 2000) / 100.0)) * 1.50);
         }
     }
-
-    
 
 }
