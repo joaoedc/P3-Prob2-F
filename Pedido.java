@@ -1,25 +1,16 @@
-package main;
+package P2_Prob3_2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author jecunha
- */
 public final class Pedido {
 
     private int numero;
     private String nomeCliente;
     private Date data;
     private String endereco;
-    private TipoEntrega tipo;
+    private EntregaInterface tipo;
     private ArrayList<ItemPedido> itens;
 
     public Pedido(int numero, String nomeCliente, String endereco) {
@@ -62,7 +53,7 @@ public final class Pedido {
         this.endereco = endereco;
     }
 
-    public void setTipo(TipoEntrega tipo) {
+    public void setTipo(EntregaInterface tipo) {
         this.tipo = tipo;
     }
 
@@ -88,21 +79,8 @@ public final class Pedido {
             peso = peso + item.getProduto().getPeso() * item.getQuantidade();
         }
 
-        switch (tipo) {
-            case SEDEX:
-                valor = calculaSedex(peso);
-                break;
-
-            case PAC:
-                valor = calculaPac(peso);
-                break;
-
-            case LOCAL:
-                return 0;
-
-            default:
-                break;
-        }
+        Contexto contexto = new Contexto(tipo);
+        valor = contexto.selecionaEntrega(peso);
 
         return valor;
     }
@@ -123,18 +101,6 @@ public final class Pedido {
         } else {
             double valor = 45;
             return 45 + (((int) Math.ceil((peso - 2000) / 100.0)) * 1.50);
-        }
-    }
-
-    private double calculaPac(double peso) throws TipoEntregaInvalido {
-        if (peso <= 1000) {
-            return 15;
-        } else if (peso <= 3000) {
-            return 20;
-        } else if (peso <= 5000) {
-            return 30;
-        } else {
-            throw new TipoEntregaInvalido("Tipo de entrega não suportado");
         }
     }
 

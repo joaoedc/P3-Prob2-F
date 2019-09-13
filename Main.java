@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package main;
+package P2_Prob3_2;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author nicolas
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -32,7 +23,7 @@ public class Main {
         pedido.incluirItem(item3);
         pedido.incluirItem(item5);
 
-        try {
+        /* try {
             pedido.setTipo(TipoEntrega.LOCAL);
             System.out.println("Valor Entrega local: " + pedido.getValorEntrega());
             System.out.println("Valor Total local: " + pedido.getValorTotal());
@@ -46,8 +37,7 @@ public class Main {
             System.out.println("Valor Total PAC: " + pedido.getValorTotal());
         } catch (TipoEntregaInvalido ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        } */
     }
 
 }
