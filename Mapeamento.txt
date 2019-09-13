@@ -1,0 +1,13 @@
+Grupo F
+Eduardo Augusto Burger
+João Eduardo Cunha
+Maik Henrique Carminati
+Nicolas Frasson
+
+Strategy
+ - Context: Contexto.java;
+ - Strategy: EntregaInterface.java;
+ - ConcreteStrategy: RetiradaNoLocal.java, Sedex.java, Pac.java, Motoboy.java
+
+Singleton
+ - RetiradaNoLocal.java, Sedex.java, Pac.java, Motoboy.java
