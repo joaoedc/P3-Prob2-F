@@ -1,12 +1,11 @@
 
 package P2_Prob3_2;
 
-public class RetiradaNoLocal {
+public class RetiradaNoLocal implements Strategy {
     
     private static RetiradaNoLocal instance;
     
-    private RetiradaNoLocal() {
-        
+    private RetiradaNoLocal() {        
     }
     
     public static RetiradaNoLocal getInstance() {
@@ -15,8 +14,9 @@ public class RetiradaNoLocal {
         }
         return instance;
     }
-    
-    private double calculaRetiradaNoLocal() {    
+
+    @Override
+    public double calculoTipoEntrega(double peso, double quantidade) throws TipoEntregaInvalido {
         return 0.00;
     }
 }
