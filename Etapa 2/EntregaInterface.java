@@ -6,6 +6,6 @@ package P2_Prob3_2;
  */
 public interface EntregaInterface {
 
-    public double entrega(double peso) throws TipoEntregaInvalido ;
+    public double entrega(double peso, int quantidade) throws TipoEntregaInvalido ;
 
 }

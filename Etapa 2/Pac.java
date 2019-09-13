@@ -16,7 +16,7 @@ public class Pac implements EntregaInterface {
     }
 
     @Override
-    public double entrega(double peso) throws TipoEntregaInvalido {
+    public double entrega(double peso, int quantidade) throws TipoEntregaInvalido {
         if (peso <= 1000) {
             return 10;
         } else if (peso < 2000) {

@@ -13,12 +13,13 @@ public final class Pedido {
     private EntregaInterface tipo;
     private ArrayList<ItemPedido> itens;
 
-    public Pedido(int numero, String nomeCliente, String endereco) {
+    public Pedido(int numero, String nomeCliente, String endereco, EntregaInterface tipo) {
         this.numero = numero;
         this.nomeCliente = nomeCliente;
         this.endereco = endereco;
         this.setData(data);
         this.itens = new ArrayList<>(Arrays.asList());
+        this.tipo = tipo;
     }
 
     public int getNumero() {
@@ -80,28 +81,13 @@ public final class Pedido {
         }
 
         Contexto contexto = new Contexto(tipo);
-        valor = contexto.selecionaEntrega(peso);
+        valor = contexto.selecionaEntrega(peso, itens.size());
 
         return valor;
     }
 
     public double getValorTotal() throws TipoEntregaInvalido {
         return getValorPedido() + getValorEntrega();
-    }
-
-    private double calculaSedex(double peso) throws TipoEntregaInvalido {
-        if (peso <= 500) {
-            return 12.50;
-        } else if (peso <= 750) {
-            return 20;
-        } else if (peso <= 1200) {
-            return 30;
-        } else if (peso <= 2000) {
-            return 45;
-        } else {
-            double valor = 45;
-            return 45 + (((int) Math.ceil((peso - 2000) / 100.0)) * 1.50);
-        }
     }
 
 }

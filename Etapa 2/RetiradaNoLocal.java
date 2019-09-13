@@ -1,13 +1,12 @@
-
 package P2_Prob3_2;
 
-public class RetiradaNoLocal implements Strategy {
-    
+public class RetiradaNoLocal implements EntregaInterface {
+
     private static RetiradaNoLocal instance;
-    
-    private RetiradaNoLocal() {        
+
+    RetiradaNoLocal() {
     }
-    
+
     public static RetiradaNoLocal getInstance() {
         if (instance == null) {
             instance = new RetiradaNoLocal();
@@ -16,7 +15,7 @@ public class RetiradaNoLocal implements Strategy {
     }
 
     @Override
-    public double calculoTipoEntrega(double peso, double quantidade) throws TipoEntregaInvalido {
+    public double entrega(double peso, int quantidade) throws TipoEntregaInvalido {
         return 0.00;
     }
 }
